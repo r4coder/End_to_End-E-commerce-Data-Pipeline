@@ -1,0 +1,19 @@
+{
+    "name": "LS_ADLS_Gen2",
+    "type": "Microsoft.DataFactory/factories/linkedServices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<your-storage-account-name>.dfs.core.windows.net",
+            "accountKey": {
+                "type": "SecureString",
+                "value": "<use Azure Key Vault reference here - never commit real keys>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

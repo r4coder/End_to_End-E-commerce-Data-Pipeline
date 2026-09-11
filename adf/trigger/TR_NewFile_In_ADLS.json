@@ -1,0 +1,26 @@
+{
+    "name": "TR_NewFile_In_ADLS",
+    "type": "Microsoft.DataFactory/factories/triggers",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Stopped",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "PL_Ecommerce_Orchestration",
+                    "type": "PipelineReference"
+                },
+                "parameters": {
+                    "adls_container": "abfss://ecommerce-pipeline@<storage-account>.dfs.core.windows.net"
+                }
+            }
+        ],
+        "type": "BlobEventsTrigger",
+        "typeProperties": {
+            "blobPathBeginsWith": "/ecommerce-pipeline/blobs/raw/",
+            "ignoreEmptyBlobs": true,
+            "scope": "/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>",
+            "events": ["Microsoft.Storage.BlobCreated"]
+        }
+    }
+}

@@ -1,0 +1,2 @@
+pyspark>=3.5.0
+delta-spark>=3.0.0   # optional locally - only needed to test Delta writes; not required on Databricks

@@ -1,0 +1,22 @@
+{
+    "name": "LS_AzureDatabricks",
+    "type": "Microsoft.DataFactory/factories/linkedServices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureDatabricks",
+        "typeProperties": {
+            "domain": "https://<your-databricks-workspace-url>.azuredatabricks.net",
+            "accessToken": {
+                "type": "SecureString",
+                "value": "<use Azure Key Vault reference here - never commit real tokens>"
+            },
+            "newClusterNodeType": "Standard_DS3_v2",
+            "newClusterNumOfWorker": "2",
+            "newClusterVersion": "13.3.x-scala2.12"
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "name": "PL_Ecommerce_Orchestration",
+    "type": "Microsoft.DataFactory/factories/pipelines",
+    "properties": {
+        "description": "Orchestrates the end-to-end e-commerce pipeline. ADF's job here is orchestration only - it checks the raw files have landed in ADLS, then hands off all cleaning/transformation/loading to a Databricks notebook (which does bronze -> silver -> gold -> Azure SQL).",
+        "parameters": {
+            "adls_container": {
+                "type": "string",
+                "defaultValue": "abfss://ecommerce-pipeline@<storage-account>.dfs.core.windows.net"
+            }
+        },
+        "activities": [
+            {
+                "name": "Check_Raw_Files_Exist",
+                "type": "GetMetadata",
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "DS_ADLS_RawFolder",
+                        "type": "DatasetReference"
+                    },
+                    "fieldList": ["childItems"],
+                    "storeSettings": {
+                        "type": "AzureBlobFSReadSettings",
+                        "enablePartitionDiscovery": false
+                    }
+                }
+            },
+            {
+                "name": "Run_ETL_Notebook",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Check_Raw_Files_Exist",
+                        "dependencyConditions": ["Succeeded"]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.02:00:00",
+                    "retry": 1,
+                    "retryIntervalInSeconds": 60
+                },
+                "typeProperties": {
+                    "notebookPath": "/Repos/ecommerce-pipeline/databricks/notebooks/etl_pipeline_databricks",
+                    "baseParameters": {
+                        "adls_container": {
+                            "value": "@pipeline().parameters.adls_container",
+                            "type": "Expression"
+                        }
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "LS_AzureDatabricks",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "annotations": []
+    }
+}

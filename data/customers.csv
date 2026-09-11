@@ -1,0 +1,12 @@
+customer_id,customer_name,email,region,signup_date
+C001,Aarav Sharma,aarav.sharma@example.com,South,2023-01-12
+C002,Priya Nair,priya.nair@example.com,West,2023-02-01
+C003,Rohan Gupta,rohan.gupta@example.com,North,2023-02-19
+C004,Sneha Reddy,sneha.reddy@example.com,South,2023-03-03
+C005,Vikram Singh,vikram.singh@example.com,East,2023-03-22
+C006,Ananya Iyer,ananya.iyer@example.com,West,2023-04-14
+C007,Karan Mehta,karan.mehta@example.com,,2023-05-05
+C008,Divya Menon,divya.menon@example.com,East,2023-05-21
+C009,Arjun Nayar,arjun.nayar@example.com,North,2023-06-02
+C010,Meera Pillai,meera.pillai@example.com,South,2023-06-18
+C001,Aarav Sharma,aarav.sharma@example.com,South,2023-01-12

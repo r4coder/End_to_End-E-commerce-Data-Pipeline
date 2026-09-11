@@ -1,0 +1,11 @@
+product_id,product_name,category,price
+P001,Wireless Mouse,Electronics,250.00
+P002,Bluetooth Speaker,Electronics,150.00
+P003,Office Chair,Furniture,99.50
+P004,Desk Lamp,Furniture,120.00
+P005,Notebook Set,Stationery,75.00
+P006,Water Bottle,Accessories,45.00
+P007,Backpack,Accessories,60.00
+P008,Running Shoes,Sportswear,
+P009,Yoga Mat,Sportswear,35.00
+P010,Ceramic Mug,Home,15.00

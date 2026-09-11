@@ -1,0 +1,21 @@
+# Generated pipeline output
+output/*
+!output/.gitkeep
+*.crc
+_SUCCESS
+
+# Never commit real credentials
+*.env
+secrets.json
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Power BI (binary, doesn't diff well - dax_measures.md is the source of truth)
+*.pbix
+
+# OS
+.DS_Store

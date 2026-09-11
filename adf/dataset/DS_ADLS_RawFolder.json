@@ -1,0 +1,19 @@
+{
+    "name": "DS_ADLS_RawFolder",
+    "type": "Microsoft.DataFactory/factories/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "LS_ADLS_Gen2",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "raw",
+                "fileSystem": "ecommerce-pipeline"
+            }
+        }
+    }
+}
